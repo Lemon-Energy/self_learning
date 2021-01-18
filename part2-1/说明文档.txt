@@ -1,0 +1,46 @@
+一、项目说明
+   这是一个通过gulp构建的脚手架
+   对项目中的html、js、css、图片、字体文件等进行编译、压缩、打包
+
+二、功能
+   build
+     1）将开发文件编译为最终可预览运行的项目文件
+   develop
+     1）在开发过程中对文件实时编译
+   clear
+     1）清除所有编译后产生的文件
+
+三、实现原理
+   注：以下gulp的插件均使用gulp-load-plugins的方式加载
+   1）内置
+      a）clean方法：清除编译后的文件，使用del插件--非gulp下属插件
+      b）page方法：负责编译HTML文件，使用gulp的gulp-swig插件
+      c）style方法：负责编译scss样式文件，使用gulp-sass插件
+      d）script方法：负责编译js文件，使用gulp的gulp-babel插件
+      e）image方法：负责处理图片文件，使用gulp的gulp-imagemin插件
+      f）font方法：负责处理字体文件，使用gulp的gulp-imagemin插件
+      g）extra方法：负责处理public文件夹中不需要编译压缩的文件
+      h）serve方法：负责构建一个临时服务器用于开发调试，使用browser-sync插件--非gulp下属插件
+      i）useref方法：负责压缩编译好的html，css，js文件，使用gulp的gulp-htmlmin、gulp-clean-css、gulp-uglify、gulp-useref插件
+      j）compile方法：page、style、script三者通过parallel组合的方法
+    
+    2）组合
+      a）build方法
+        I、先清空已有的文件内容
+        II、再开始构建新的文件内容
+        III、由一下方式组合而成
+            series(
+              clean,
+              parallel(
+                series(compile, useref),
+                image,
+                font,
+                extra
+              )
+            )
+        ps：series是由gulp提供的一个串联执行任务的方法，有顺序要求，可异步
+            parallel是有gulp提供的一个并联执行任务的方法，无顺序要求
+      
+      b）develop方法
+        I、由compile和serve组合而成
+        II、开放阶段只关于经常变动的开发文件内容，无变动的字体和图片文件不加入其中
