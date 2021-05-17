@@ -1,0 +1,13 @@
+1、首先需要安装的是与 webpack 相关的包
+  -- webpack、webpack-cli、webpack-dev-server、webpack-merge
+2、安装其他需要用到的包
+  2-1、vue-loader vue-template-compiler -- 解析编译vue文件
+  2-2、@babel/core @babel/preset-env babel-loader -- 编译解析 ES6 等新语法特性
+  2-3、uglifyjs-webpack-plugin -- js文件压缩
+  2-4、css-loader style-loader less-loader postcss-loader autoprefixer mini-css-extract-plugin optimize-css-assets-webpack-plugin -- 样式解析及文件压缩
+  2-5、file-loader image-webpack-loader -- 图片处理
+  2-6、html-webpack-plugin clean-webpack-plugin -- html模板编译和清空dist文件夹
+
+3、对通用配置进行编写 -- webpack.common.js
+4、编写开发模式下的配置 -- webpack.dev.js
+5、编写生产模式下的配置 -- webpack.prod.js

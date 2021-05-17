@@ -1,0 +1,59 @@
+{
+  "name": "vue-app-base",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "webpack-dev-server --hot --open --env.NODE_ENV=development --config build/webpack.dev.js",
+    "build": "webpack --env.NODE_ENV=production --config build/webpack.prod.js",
+    "lint": "eslint --fix --ext .js --ext .vue"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "vue": "^2.6.12"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
+    "autoprefixer": "^10.2.5",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "css-loader": "^5.2.4",
+    "eslint": "^7.26.0",
+    "eslint-webpack-plugin": "^2.5.4",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "image-webpack-loader": "^7.0.1",
+    "less-loader": "^9.0.0",
+    "mini-css-extract-plugin": "^1.6.0",
+    "optimize-css-assets-webpack-plugin": "^6.0.0",
+    "postcss-loader": "^5.3.0",
+    "style-loader": "^2.0.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "url-loader": "^4.1.1",
+    "vue-loader": "^15.9.7",
+    "vue-template-compiler": "^2.6.12",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
